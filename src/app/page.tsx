@@ -187,10 +187,12 @@ export default function Home() {
               </button>
             </div>
 
-            <section className="hidden peer-hover:block border-4 border-double border-purple-600">
-              <div className="border-b border-double border-purple-600">
+            <section className="hidden border-4 border-double border-purple-600 peer-hover:block peer-hover:md:flex peer-hover:md:justify-around">
+              <div className="border-b border-double border-purple-600 md:border-r">
                 <div className="flex items-center justify-around ">
-                  <p className="mb-1 mx-1 text-sm md:text-lg w-1/3 first-letter:float-left first-letter:mr-3 first-letter:text-7xl first-letter:font-bold first-line:uppercase first-line:tracking-widest">断捨離品目名を入力し、適切なカテゴリを選択してSubmitボタンを押すと、アイテムに期限が割り当てられます。</p>
+                  <p className="mx-1 mb-1 w-1/3 p-1 text-sm first-letter:float-left first-letter:mr-3 first-letter:text-7xl first-letter:font-bold first-line:uppercase first-line:tracking-widest md:text-lg">
+                    断捨離品目名を入力し、適切なカテゴリを選択してSubmitボタンを押すと、アイテムに期限が割り当てられます。
+                  </p>
                   <Image
                     src={manual1Image}
                     alt={`manual1`}
@@ -200,7 +202,9 @@ export default function Home() {
               </div>
               <div className="">
                 <div className="flex items-center justify-around ">
-                  <p className="mb-1 mx-1 text-sm md:text-lg w-1/3 first-letter:float-left first-letter:mr-3 first-letter:text-7xl first-letter:font-bold first-line:uppercase first-line:tracking-widest">Limit欄に設定された時間が過ぎるとアクションが促されます。Actions欄の背景色が赤色に変わり、プルダウンメニューからは断捨離を行うか期限を延ばすかを選択できます。背景色の変更が反映されない場合は、ページをリロードするか再度アクセスしてください。</p>
+                  <p className="mx-1 mb-1 w-1/3 p-1 text-sm first-letter:float-left first-letter:mr-3 first-letter:text-7xl first-letter:font-bold first-line:uppercase first-line:tracking-widest md:text-lg">
+                    Limit欄に設定された時間が過ぎるとActions欄の背景色が赤色に変わり、プルダウンメニューからは断捨離を行うか期限を延ばすかを選択できます。(背景色の変更が反映されない場合はページをリロード)
+                  </p>
                   <Image
                     src={manual2Image}
                     alt={`manual2`}
@@ -300,7 +304,7 @@ export default function Home() {
           </div>
           <button
             type="submit"
-            className="md:w-50 w-1/4 rounded-md bg-blue-500/50 px-4 py-1 text-white hover:bg-blue-600 focus:bg-blue-600 focus:outline-none"
+            className="w-30 rounded-md bg-blue-500/50 px-4 py-1 text-white hover:bg-blue-600 focus:bg-blue-600 focus:outline-none max-md:w-56"
           >
             Submit
           </button>
