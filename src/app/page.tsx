@@ -8,6 +8,9 @@ import classNames from "classnames";
 import Image from "next/image";
 import manual1Image from "/public/images/manual1.png";
 import manual2Image from "/public/images/manual2.png";
+import pwa1Image from "/public/images/pwa1.png";
+import pwa2Image from "/public/images/pwa2.png";
+import pwa3Image from "/public/images/pwa3.png";
 //import Checkbox from '@mui/material/Checkbox'
 
 const MemoizedHeader = memo(Header);
