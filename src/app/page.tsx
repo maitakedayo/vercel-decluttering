@@ -1,5 +1,5 @@
 "use client";
-import Head from "next/head";
+import Header from "./Header/index"
 import Footer from "./Footer/index";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useEffect, useLayoutEffect, useState, memo } from "react";
@@ -10,6 +10,7 @@ import manual1Image from "/public/images/manual1.png";
 import manual2Image from "/public/images/manual2.png";
 //import Checkbox from '@mui/material/Checkbox'
 
+const MemoizedHeader = memo(Header);
 const MemoizedFooter = memo(Footer);
 
 export type MyFormTextData = {
@@ -31,7 +32,7 @@ export default function Home() {
   } = useForm<MyFormTextData>();
   const [selectedOption, setSelectedOption] = useState("");
 
-  const title = "断捨離App Next.js page";
+  //const title = "断捨離App Next.js page";
 
   const onSubmitText: SubmitHandler<MyFormTextData> = (data) => {
     if (formData.length <= 25 - 1) {
@@ -94,7 +95,7 @@ export default function Home() {
   };
 
   const clearLocalStorage = () => {
-    localStorage.clear();
+    localStorage.removeItem('alldata');
     setFormData([]);
   };
 
@@ -141,9 +142,16 @@ export default function Home() {
     const fetchDataFromLocalStorage = () => {
       console.log("fetchDataFromLocalStorage()");
       const dataFromLocalStorage = localStorage.getItem("alldata");
+
+      //もしローカルストレージに無関係なデータが入っている場合はfilterで取り除く
       if (dataFromLocalStorage) {
-        const parsedData = JSON.parse(dataFromLocalStorage);
-        setFormData(parsedData);
+        const parsedData: any[] = JSON.parse(dataFromLocalStorage);
+        const validData: MyFormTextData[] = parsedData.filter((item: any) => (
+          item.id &&
+          item.item &&
+          item.category
+        ));
+        setFormData(validData);
       }
     };
     fetchDataFromLocalStorage();
@@ -167,13 +175,11 @@ export default function Home() {
     return () => {
       window.removeEventListener("beforeunload", handleWindowClose);
     };
-  }, [formData]); //最後に１回だけが希望なのだがどうだろう formData変更時に (デバックでは毎回実行されてはないが)
+  }, [formData]); // formData変更時にも実行追加
 
   return (
     <div className="p-4">
-      <Head>
-        <title>{title}</title>
-      </Head>
+      <MemoizedHeader/>
 
       <div className="mb-2 pr-3">
         <section className="font-sans">
@@ -392,6 +398,9 @@ export default function Home() {
             </p>
             <p className="mb-2 text-lg text-gray-700">
               同じPCおよびブラウザでのみ、保存後にデータを読み込むことができます。
+            </p>
+            <p className="mb-2 text-lg text-gray-700">
+              あぷりをインストールすることでオフライン使用＆アラームプッシュ通知(todo)を受け取ることができます。
             </p>
           </div>
         </section>
