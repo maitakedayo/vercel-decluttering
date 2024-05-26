@@ -108,6 +108,14 @@ export default function Home() {
     setFormData(() => updatedFormData);
   };
 
+  //モバイル端末用の対策(window.addEventListener("beforeunload", handleWindowClose);が効かないモバイル用)
+  const handleSave = () => {
+    const keys = Object.keys(formData);
+    if (keys.length > 0) {
+      localStorage.setItem("alldata", JSON.stringify(formData));
+    }
+  };
+
   const handleExtend = (idToExtend: string, additionalMinutes: number) => {
     const updatedFormData = formData.map((data) => {
       if (data.id === idToExtend) {
@@ -385,10 +393,22 @@ export default function Home() {
               </div>
             </div>
           </div>
+          
+          <div className="flex justify-end">
+            <p className="font-serif mb-2 mr-2 text-lg text-green-800">
+              リロードで消える場合用
+            </p>
+            <button
+              onClick={handleSave}
+              className="w-1/3 rounded-md bg-green-600/50 px-4 py-1 mb-2 font-serif text-white  hover:bg-red-600 focus:bg-red-600 focus:outline-none"
+            >
+              Save
+            </button>
+          </div>
           <div className="flex justify-end">
             <button
               onClick={clearLocalStorage}
-              className="w-1/3 rounded-md bg-teal-600/50 px-4 py-1 font-serif text-white  hover:bg-red-600 focus:bg-red-600 focus:outline-none"
+              className="w-1/3 rounded-md bg-pink-600/50 px-4 py-1 font-serif text-white  hover:bg-red-600 focus:bg-red-600 focus:outline-none"
             >
               All Clear
             </button>
