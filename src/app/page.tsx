@@ -31,6 +31,7 @@ export default function Home() {
     reset,
   } = useForm<MyFormTextData>();
   const [selectedOption, setSelectedOption] = useState("");
+  const [showPwaSection, setShowPwaSection] = useState(false);
 
   //const title = "断捨離App Next.js page";
 
@@ -397,12 +398,61 @@ export default function Home() {
               登録アイテム数は最大25個までです。
             </p>
             <p className="mb-2 text-lg text-gray-700">
-              同じPCおよびブラウザでのみ、保存後にデータを読み込むことができます。
+              同PCおよび同ブラウザでのみデータを保存できます。(対応:あぷりをインストール)
+            </p>
+            <p className="mb-2 text-lg text-gray-700">
+              プライベートタブやトラッキング強化ブラウザではデータが保存できない場合があります。(対応:あぷりをインストール)
             </p>
             <p className="mb-2 text-lg text-gray-700">
               あぷりをインストールすることでオフライン使用＆アラームプッシュ通知(todo)を受け取ることができます。
             </p>
+            <button className="md:w-34 h-9 w-5/6 rounded-md bg-purple-400/50 px-2 py-1 mb-2 font-serif text-white hover:bg-purple-500 focus:bg-purple-500 "
+              onClick={() => setShowPwaSection(!showPwaSection)}
+            >
+              {showPwaSection ? 'まにゅあるを閉じる' : 'あぷりインストールまにゅある'}
+            </button>
+            {showPwaSection && (
+              <section className="border-4 border-double border-purple-600 md:flex md:justify-around">
+                <div className="border-b border-double border-purple-600 md:border-r">
+                  <div className="flex items-center justify-around ">
+                    <p className="mx-1 mb-1 w-1/3 p-1 text-sm first-letter:float-left first-letter:mr-3 first-letter:text-7xl first-letter:font-bold first-line:uppercase first-line:tracking-widest md:text-lg">
+                      パソコンの場合、ウェブサイトの上部にあるURLの近くにある『インストール』ボタンを選択します。
+                    </p>
+                    <Image
+                      src={pwa2Image}
+                      alt={`pwa2`}
+                      className="aspect-auto w-2/3 border-l border-double border-purple-600"
+                    />
+                  </div>
+                </div>
+                <div className="border-b border-double border-purple-600 md:border-r">
+                  <div className="flex items-center justify-around ">
+                    <p className="mx-1 mb-1 w-1/3 p-1 text-sm first-letter:float-left first-letter:mr-3 first-letter:text-7xl first-letter:font-bold first-line:uppercase first-line:tracking-widest md:text-lg">
+                      モバイル端末の場合、画面右上のメニューから『アプリをインストール』を選択します。
+                    </p>
+                    <Image
+                      src={pwa1Image}
+                      alt={`pwa1`}
+                      className="aspect-auto w-2/3 border-l border-double border-purple-600"
+                    />
+                  </div>
+                </div>
+                <div className="">
+                  <div className="flex items-center justify-around ">
+                    <p className="mx-1 mb-1 w-1/3 p-1 text-sm first-letter:float-left first-letter:mr-3 first-letter:text-7xl first-letter:font-bold first-line:uppercase first-line:tracking-widest md:text-lg">
+                      ホーム画面にショートカットが作成されます。
+                    </p>
+                    <Image
+                      src={pwa3Image}
+                      alt={`pwa3`}
+                      className="aspect-auto w-2/3 border-l border-double border-purple-600"
+                    />
+                  </div>
+                </div>
+              </section>
+            )}
           </div>
+
         </section>
 
         <div className="pt-6">
