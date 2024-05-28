@@ -11,6 +11,7 @@ import manual2Image from "/public/images/manual2.png";
 import pwa1Image from "/public/images/pwa1.png";
 import pwa2Image from "/public/images/pwa2.png";
 import pwa3Image from "/public/images/pwa3.png";
+import { OneSignalInitial } from './lib/OneSignalInitial';
 //import Checkbox from '@mui/material/Checkbox'
 
 const MemoizedHeader = memo(Header);
@@ -191,6 +192,7 @@ export default function Home() {
 
   return (
     <div className="p-4">
+      <OneSignalInitial/>
       <MemoizedHeader/>
 
       <div className="mb-2 pr-3">
@@ -393,10 +395,9 @@ export default function Home() {
               </div>
             </div>
           </div>
-          
           <div className="flex justify-end">
             <p className="font-serif mb-2 mr-2 text-lg text-green-800">
-              リロードで消える場合用
+              reload消滅用
             </p>
             <button
               onClick={handleSave}
@@ -421,7 +422,7 @@ export default function Home() {
               登録アイテム数は最大25個までです。
             </p>
             <p className="mb-2 text-lg text-gray-700">
-              同PCおよび同ブラウザでのみデータを保存できます。(対応:あぷりをインストール)
+              同PCおよび同ブラウザでのみデータを保存できます。(共有PCの場合認証todo)
             </p>
             <p className="mb-2 text-lg text-gray-700">
               プライベートタブやトラッキング強化ブラウザではデータが保存できない場合があります。(対応:あぷりをインストール)
