@@ -11,6 +11,7 @@ import manual2Image from "/public/images/manual2.png";
 import pwa1Image from "/public/images/pwa1.png";
 import pwa2Image from "/public/images/pwa2.png";
 import pwa3Image from "/public/images/pwa3.png";
+import mainIconImage from "/public/images/mainIcon.png";
 import { OneSignalInitial } from './lib/OneSignalInitial';
 //import Checkbox from '@mui/material/Checkbox'
 
@@ -194,6 +195,13 @@ export default function Home() {
     <div className="p-4">
       <OneSignalInitial/>
       <MemoizedHeader/>
+      <div className="px-3 py-1">
+        <Image
+          src={mainIconImage}
+          alt={`mainIcon`}
+          className="aspect-auto max-ms:w-full"
+        />
+      </div>
 
       <div className="mb-2 pr-3">
         <section className="font-sans">
